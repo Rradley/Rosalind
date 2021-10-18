@@ -47,7 +47,7 @@ def LongestPath(source,sink,graph):
     dictGraph1 = dictGraph.copy()
     topOrd = TopologicalOrdering(nodes, dictGraph) 
     
-    
+    #Initialise Variables
     queue = []
     weights = []
     visited = []  
@@ -57,6 +57,7 @@ def LongestPath(source,sink,graph):
     returnDict = {}
     visited.append(int(source))
 
+    #Go through topological ordered graph and loop through initialising the queue
     for key, variables in dictGraph1.items():
         if int(key) == int(source):             
             for i in range(len(variables)):
@@ -65,13 +66,14 @@ def LongestPath(source,sink,graph):
                             queue.append(graph[j][1])
                             weights.append(graph[j][2])
                             
-                            
+                            #Debugging Print tests
                             #print('node1',graph[j][0])
                             #print('node2',graph[j][1])
                             #print('weight',graph[j][2])
                             #print('')
     #visited.append(int(source)) 
-                        
+    
+        #Breadth first search to find the longest paths from source to sink (DOESNT WORK)
     while queue:
         currentNode = queue.pop(0)
         #weight += weights.pop(0)
@@ -116,6 +118,7 @@ def LongestPath(source,sink,graph):
     #            queue.append(neighbour)
                  
 """
+#Pseudo code for the problem
 """
 longest-path(G)
 ✄ Input: Weighted DAG G = (V, E)
@@ -126,6 +129,7 @@ do dist(v) = max(u,v)∈E {dist(u) + w(u, v)}
 return maxv∈V {dist(v)}
 """
 
+#Main function to run the script
 if __name__ == "__main__":
     fileName = '../dataSets/rosalind_ba5d.txt'
     source,sink,graph = ReadFile(fileName)
