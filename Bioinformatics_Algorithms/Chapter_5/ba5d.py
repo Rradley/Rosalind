@@ -4,9 +4,9 @@ Created on Fri Sep 17 09:51:35 2021
 
 @author: rob
 """
-from ba5n import TopologicalOrdering,topological_ordering
+from ba5n import TopologicalOrdering
 
-
+#Reads in input file from rosalind
 def ReadFile (fileName):    
     with open(fileName, "r") as file:
         source = file.readline()
@@ -23,10 +23,11 @@ def ReadFile (fileName):
     return source,sink,graph
 
 def BuildDict(graph):
+    #initialise variables
     dictGraph = {}
     nodes = set()
     
-    
+    #runs through grah to build a dictionary of nodes and edges for topological order code
     for i in range (len(graph)):
         List=[]
         nodes.add(str(graph[i][0]))
@@ -41,7 +42,7 @@ def BuildDict(graph):
 
 
 def LongestPath(source,sink,graph):
-      
+    #prepares data for topological ordering
     """
     nodes, dictGraph = BuildDict(graph)
     dictGraph1 = dictGraph.copy()
